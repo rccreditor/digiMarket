@@ -110,3 +110,32 @@ window.addEventListener('scroll', animateOnScroll);
 
 // Initialize animations
 animateOnScroll();
+document.addEventListener("DOMContentLoaded", () => {
+    const userData = JSON.parse(localStorage.getItem("nexusUser"));
+  
+    const loginBtn = document.getElementById("login-btn");
+    const userNav = document.getElementById("user-nav");
+    const userNameSpan = document.getElementById("username");
+  
+    if (userData && loginBtn && userNav && userNameSpan) {
+      // Hide "Get Started", show user info
+      loginBtn.style.display = "none";
+      userNav.style.display = "flex";
+      userNameSpan.innerText = userData.name;
+  
+      // Toggle dropdown
+      const avatar = document.querySelector(".user-avatar");
+      const dropdown = document.querySelector(".dropdown-menu");
+  
+      avatar.addEventListener("click", () => {
+        dropdown.classList.toggle("show");
+      });
+  
+      // Logout
+      document.getElementById("logout").addEventListener("click", () => {
+        localStorage.removeItem("nexusUser");
+        window.location.href = "index.html";
+      });
+    }
+  });
+  

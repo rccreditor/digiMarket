@@ -20,7 +20,20 @@
                 <li><a href="#testimonials">Testimonials</a></li>
                 <li><a href="#footer">Contact</a></li>
             </ul>
-            <a href="login.html" class="cta-button">Get Started</a>
+            <!-- Default: Hidden initially -->
+<div id="user-nav" class="user-info" style="display: none;">
+    <div class="user-avatar">
+      <img src="https://i.pravatar.cc/40" alt="User Avatar" />
+      <span id="username"></span>
+      <div class="dropdown-menu">
+        <a href="#" id="logout">Logout</a>
+      </div>
+    </div>
+  </div>
+  
+  <!-- Shown if not logged in -->
+  <a href="login.html" id="login-btn" class="cta-button">Get Started</a>
+  
             <div class="mobile-menu">
                 <i class="fas fa-bars"></i>
             </div>
