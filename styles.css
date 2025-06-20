@@ -142,7 +142,7 @@ header.scrolled {
 /* Hero Section */
 .hero {
     padding: 240px 5% 200px;
-    background: url('/assets/bg_hero.jpg');
+    background: url('bg_hero.jpg');
     background-size: cover;
     background-position: center;
     position: relative;
