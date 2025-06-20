@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | Nexus Digital</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+    <a href="index.html" class="back-home"><i class="fas fa-arrow-left"></i> Back to Home</a>
+    <div class="login-container">
+        <h2>Login to Nexus Digital</h2>
+        <form>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter your email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="login-btn">Login</button>
+        </form>
+        <p class="switch-link">Don't have an account? <a href="signup.html">Sign up</a></p>
+    </div>
+    <script>
+  document.querySelector("form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.querySelector("input[name='email']").value;
+    const password = document.querySelector("input[name='password']").value;
+
+    try {
+      const res = await fetch("http://localhost:5000/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json();
+
+      if (res.status === 200) {
+        alert("Login successful! Welcome " + data.user.name);
+        // Redirect or store user info if needed
+        window.location.href = "index.html"; // or dashboard.html
+      } else {
+        alert(data.message || "Login failed");
+      }
+    } catch (err) {
+      alert("Error: Could not log in");
+      console.error(err);
+    }
+  });
+</script>
+
+</body>
+</html> 
